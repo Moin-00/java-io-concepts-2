@@ -1,19 +1,31 @@
 import java.io.*;
 
 public class ByteArrayInputOutputStreamExample {
+
+//    input stream = Consider this as a pipe of input data that we read from either console or file
+//    output stream = Consider this as a  pipe of output data we write to either console or file
+
+//    we can only read and write from bytearray stream once
     public static void main(String[] args) {
         byte [] bytearray = {'H','e','l','l','o'};
         try{
 
-            InputStream inputStream = new ByteArrayInputStream(bytearray,0,bytearray.length);
-            InputStream inputStream2 = new ByteArrayInputStream(bytearray,1,bytearray.length);
-//            offset is used to tell the input-stream where to start the bytearray from
-//            i.e the index from which we want to read teh bytearray from
+/*
+Here InputStream is an abstract class and ByteArrayInputStream extends this abstract class (Up casting)
+Here OutputStream is an abstract class and ByteArrayOutputStream extends this abstract class (Up casting)
+*/
 
-//        Reads from Input-stream bytearray
-            OutputStream outputStream = new ByteArrayOutputStream();
-            OutputStream outputStream2 = new ByteArrayOutputStream();
-//        Writes the input stream over system console
+            InputStream inputStream = new ByteArrayInputStream(bytearray,0,bytearray.length);//read
+            InputStream inputStream2 = new ByteArrayInputStream(bytearray,1,bytearray.length);//read
+/*
+            offset is used to tell the input-stream where to start the bytearray from
+            i.e the index from which we want to read the bytearray from
+        Reads from Input-stream bytearray
+*/
+
+            OutputStream outputStream = new ByteArrayOutputStream();//write
+            OutputStream outputStream2 = new ByteArrayOutputStream();//write
+
             outputStream.write(inputStream.readAllBytes());
 
             outputStream2.write(inputStream2.readAllBytes());
